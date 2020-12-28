@@ -36,3 +36,33 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  
+  deployqa:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script On DEPLOYQA job
+        run: echo Hello, world!
+
+      - name: Run a multi-line script On DEPLOYQA job
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+  deployprod:
+    needs: [deploydev,deployqa]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script On DEPLOYQA job
+        run: echo Hello, world!
+
+      - name: Run a multi-line script On DEPLOYQA job
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
